@@ -42,7 +42,7 @@ export default function Cart() {
 
   let profileData = [];
   const getProfileData = async () => {
-    await fetch("http://localhost:5000/api/auth/profileData", {
+    await fetch(`${process.env.REACT_APP_BASE_URL}/api/auth/profileData`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ export default function Cart() {
     let key = "";
     // const {data:{key}} = await response.json();
 
-    const response = await fetch("http://localhost:5000/api/auth/getkey", {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/auth/getkey`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ export default function Cart() {
 
     let order = [];
 
-    const orderdata = await fetch("http://localhost:5000/api/auth/checkout", {
+    const orderdata = await fetch(`${process.env.REACT_APP_BASE_URL}/api/auth/checkout`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ export default function Cart() {
       description: "Razorpay payment",
       image: "https://avatar.iran.liara.run/public/boy?username=Ash",
       order_id: order.id,//order_O352p72bY0MJuq
-      callback_url: "http://localhost:5000/api/auth/paymentverification",
+      callback_url: `${process.env.REACT_APP_BASE_URL}/api/auth/paymentverification`,
       prefill: {
         name: profileData[0].name,
         email: localStorage.getItem("userEmail"),
