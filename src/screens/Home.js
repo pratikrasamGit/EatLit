@@ -11,7 +11,6 @@ export default function Home() {
     let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/auth/foodData`, {
       // credentials: 'include',
       // Origin:"http://localhost:3000/login",
-      referrerPolicy: "unsafe_url",
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
