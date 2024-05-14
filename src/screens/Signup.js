@@ -20,7 +20,7 @@ export default function Signup() {
     })
     // console.log(latlong)
     let [lat, long] = latlong
-    console.log(lat, long)
+    // console.log(lat, long)
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/auth/getlocation`, {
       method: 'POST',
       headers: {
@@ -29,9 +29,10 @@ export default function Signup() {
       body: JSON.stringify({ latlong: { lat, long } })
 
     });
+    // console.log(response);
     const location = await response.json()
-    console.log(location);
-    setAddress(location.location);
+    // console.log(location);
+    setAddress(location);
     setCredentials({ ...credentials, [e.target.name]: location })
   }
 
@@ -47,8 +48,9 @@ export default function Signup() {
       body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.geolocation })
 
     });
+   
     const json = await response.json()
-    console.log(json);
+    // console.log(json);
     if (json.success) {
       //save the auth toke to local storage and redirect
       localStorage.setItem('token', json.authToken)
