@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 // const mongoDbClient = require("mongodb").MongoClient
 
-const mongoURI = 'mongodb+srv://foodapp:bpaKP9TS3gNBfo88@cluster0.ldmy2hh.mongodb.net/bringItApp?retryWrites=true&w=majority&appName=Cluster0&socketTimeoutMS=90000&connectTimeoutMS=360000';
+const mongoURI = 'mongodb+srv://foodapp:bpaKP9TS3gNBfo88@cluster0.ldmy2hh.mongodb.net/bringItApp?retryWrites=true&w=majority&appName=Cluster0';
 
 let options = {    
     server: {    
