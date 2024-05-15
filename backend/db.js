@@ -4,24 +4,10 @@ const mongoose = require('mongoose')
 const mongoURI = 'mongodb+srv://foodapp:bpaKP9TS3gNBfo88@cluster0.ldmy2hh.mongodb.net/bringItApp?retryWrites=true&w=majority&appName=Cluster0';
 
 let options = {    
-    server: {    
-      auto_reconnect: true,    
-      socketOptions: {
-
-        keepAlive: 1,    
-        connectTimeoutMS: 60000,    
-        socketTimeoutMS: 60000,    
-      }    
-    },    
-    replset: {    
-      auto_reconnect: true,    
-      socketOptions: {    
-        keepAlive: 1,    
-        connectTimeoutMS: 60000,    
-       socketTimeoutMS: 60000,    
-      }    
-   },
-   useNewUrlParser: true
+      
+  maxPoolSize: 50,
+  wtimeoutMS: 2500,
+  useNewUrlParser: true
 
   }
 
