@@ -20,7 +20,8 @@ let options = {
         connectTimeoutMS: 60000,    
        socketTimeoutMS: 60000,    
       }    
-   }
+   },
+   useNewUrlParser: true
 
   }
 
