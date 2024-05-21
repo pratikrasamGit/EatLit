@@ -3,14 +3,20 @@ const mongoose = require('mongoose')
 
 const mongoURI = 'mongodb+srv://foodapp:bpaKP9TS3gNBfo88@cluster0.ldmy2hh.mongodb.net/bringItApp?retryWrites=true&w=majority&appName=Cluster0';
 
-let options = {    
-      
-  maxPoolSize: 50,
-  wtimeoutMS: 2500,
-  useNewUrlParser: true
+// let options = {    
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true
 
-  }
-
+//   }
+  var options = { server:
+    { socketOptions: 
+         { 
+             socketTimeoutMS: 15000, 
+             connectTimeoutMS: 15000 
+         }
+     }
+   };
 // mongodb://<username>:<password>@merncluster-shard-00-00.d1d4z.mongodb.net:27017,merncluster-shard-00-01.d1d4z.mongodb.net:27017,merncluster-shard-00-02.d1d4z.mongodb.net:27017/?ssl=true&replicaSet=atlas-eusy5p-shard-0&authSource=admin&retryWrites=true&w=majority
 module.exports = function (callback) {
     mongoose.connect(mongoURI, options, async (err, result) => {
