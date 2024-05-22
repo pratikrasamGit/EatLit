@@ -10,8 +10,8 @@ const mongoURI = 'mongodb+srv://foodapp:bpaKP9TS3gNBfo88@cluster0.ldmy2hh.mongod
 
 //   }
   var options = { 
-    connectTimeoutMS: 5000,
-    socketTimeoutMS: 5000,
+    connectTimeoutMS: 15000,
+    socketTimeoutMS: 15000,
     useUnifiedTopology: true
    };
 // mongodb://<username>:<password>@merncluster-shard-00-00.d1d4z.mongodb.net:27017,merncluster-shard-00-01.d1d4z.mongodb.net:27017,merncluster-shard-00-02.d1d4z.mongodb.net:27017/?ssl=true&replicaSet=atlas-eusy5p-shard-0&authSource=admin&retryWrites=true&w=majority
