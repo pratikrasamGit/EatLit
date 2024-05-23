@@ -8,6 +8,7 @@ var jwt = require('jsonwebtoken');
 const axios = require('axios')
 const fetch = require('../middleware/fetchdetails');
 const jwtSecret = "HaHa";
+const mongoose = require('mongoose')
 
 const razorpay = require('razorpay')
 const dotenv = require("dotenv");
@@ -140,10 +141,17 @@ router.post('/getlocation', async (req, res) => {
 })
 router.post('/foodData', async (req, res) => {
     try {
-        // console.log( JSON.stringify(global.foodData))
-        // const userId = req.user.id;
-        // await database.listCollections({name:"food_items"}).find({});
-        res.send([global.foodData, global.foodCategory])
+        
+
+        const foodCollection = await mongoose.connection.db.collection("food_items").find().toArray();
+        
+        const foodCategory = await mongoose.connection.db.collection("food_category").find().toArray();
+
+        // console.log(foodCollection);
+
+
+        res.send([foodCollection, foodCategory])
+
     } catch (error) {
         console.error(error.message)
         res.send("Server Error")
