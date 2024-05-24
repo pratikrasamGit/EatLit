@@ -150,7 +150,7 @@ router.post('/foodData', async (req, res) => {
         // console.log(foodCollection);
 
 
-        res.send([foodCollection, foodCategory])
+        res.json({foodCollection, foodCategory})
 
     } catch (error) {
         console.error(error.message)
