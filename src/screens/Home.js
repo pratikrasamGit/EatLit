@@ -4,7 +4,7 @@ import Card from '../components/Card'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 export default function Home() {
-  const [foodCat, setFoodCat] = useState([])
+  const [foodCat, setFoodCat] = useState(null)
   const [foodItems, setFoodItems] = useState([])
   const [search, setSearch] = useState('')
   const loadFoodItems = async () => {
@@ -65,7 +65,7 @@ export default function Home() {
       </div>
       <div className='container '> 
         {
-          foodCat != []
+          foodCat != null
             ? foodCat.map((data) => {
               return (
                 
