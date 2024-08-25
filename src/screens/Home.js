@@ -31,7 +31,7 @@ export default function Home() {
       setFoodCat(respData.foodCategory)
       setLoading(false);
     } catch (error) {
-      setLoading(false);
+      // setLoading(false);
       console.error(error);
     }
 
