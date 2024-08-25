@@ -1,0 +1,27 @@
+sudo apt-get update
+sudo apt-get install docker.io -y
+sudo systemctl start docker
+sudo docker run hello-world
+docker ps
+sudo chmod 666 /var/run/docker.sock
+sudo systemctl enable docker
+docker --version
+
+
+
+
+sudo apt-get update
+sudo apt install npm
+curl o https://raw.githubusercontent.com/nvm... | bash
+source ~/.bashrc
+nvm install 20.11.0
+nvm use 20.11.0
+
+
+
+openssl s_client -connect 13.233.208.153:443
+
+
+REACT_APP_BASE_URL = 'http://ec2-13-233-208-153.ap-south-1.compute.amazonaws.com:3000'
+RZP_SECRET="pM34wEakDuozJm3Nx2UEZ2tY"
+RZP_KEY="rzp_test_zBir78yzyC1SNp"

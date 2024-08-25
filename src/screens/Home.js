@@ -3,25 +3,39 @@ import Card from '../components/Card'
 // import Carousel from '../components/Carousel'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import { Flex, Spinner } from '@chakra-ui/react'
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+
 export default function Home() {
+  const [loading, setLoading] = useState(true);
   const [foodCat, setFoodCat] = useState(null)
   const [foodItems, setFoodItems] = useState([])
   const [search, setSearch] = useState('')
   const loadFoodItems = async () => {
-    let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/auth/foodData`, {
-      // credentials: 'include',
-      // Origin:"http://localhost:3000/login",
-      // referrerPolicy: "unsafe_url",
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
 
-    });
-    const respData = await response.json()
-    console.log(respData)
-    setFoodItems(respData.foodCollection)
-    setFoodCat(respData.foodCategory)
+    try {
+      setLoading(true);
+      let response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/auth/foodData`, {
+        // credentials: 'include',
+        // Origin:"http://localhost:3000/login",
+        // referrerPolicy: "unsafe_url",
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+
+      });
+      const respData = await response.json()
+      setFoodItems(respData.foodCollection)
+      setFoodCat(respData.foodCategory)
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+    }
+
+
   }
 
   useEffect(() => {
@@ -63,12 +77,14 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div className='container '> 
+      <div className='container '>
         {
-          foodCat != null
-            ? foodCat.map((data) => {
+          loading ? <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <CircularProgress />
+          </Box>
+            : foodCat.map((data) => {
               return (
-                
+
                 <div className='row mb-3'>
                   <div key={data._id} className='fs-3 m-3 text-white'>
                     {data.CategoryName}
@@ -79,7 +95,7 @@ export default function Home() {
                     .map(filterItems => {
                       return (
                         <div className='col-12 col-md-6 col-lg-3' key={filterItems._id}>
-                          
+
                           <Card key={filterItems._id} foodName={filterItems.name} item={filterItems} options={filterItems.options[0]} ImgSrc={filterItems.img} ></Card>
                         </div>
                       )
@@ -87,7 +103,7 @@ export default function Home() {
                 </div>
               )
             })
-            : ""}
+        }
       </div>
       <Footer />
     </div>
