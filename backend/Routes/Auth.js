@@ -154,7 +154,7 @@ router.post('/foodData', async (req, res) => {
 
     } catch (error) {
         console.error(error.message)
-        res.json({"error":"Server Error"})
+        res.send("Server Error",error.message)
 
     }
 })
