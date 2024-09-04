@@ -12,6 +12,11 @@ export default function Home() {
   const [foodCat, setFoodCat] = useState(null)
   const [foodItems, setFoodItems] = useState([])
   const [search, setSearch] = useState('')
+
+  useEffect(() => {
+    loadFoodItems()
+  }, [])
+
   const loadFoodItems = async () => {
 
     try {
@@ -38,10 +43,7 @@ export default function Home() {
 
   }
 
-  useEffect(() => {
-    loadFoodItems()
-  }, [])
-
+ 
   return (
     <div >
       <div>
